@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TimeMaster - College microprocessors project demonstrating embedded systems programming">
+    <title>TimeMaster - Microprocessors Project | Joseph George Wahba</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../project-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+        <div class="floating-shape shape-5"></div>
+    </div>
+
+    <!-- Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="nav-brand">Joseph George Wahba</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <a href="../index.html#projects" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Back to Projects
+    </a>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="project-hero-content">
+                <div class="project-icon">
+                    <i class="fas fa-stopwatch"></i>
+                </div>
+                <h1>TimeMaster</h1>
+                <p class="project-tagline">A simple assembly language timer application that simulates a digital clock, displaying hours, minutes, and seconds in real-time. Runs in a DOS environment with basic timer controls.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <section class="project-content">
+        <div class="container">
+            
+            <!-- Overview -->
+            <div class="project-section">
+                <h2><i class="fas fa-info-circle"></i> Project Overview</h2>
+                <p>TimeMaster is a digital timer written in x86 assembly language that displays a real-time clock in HH:MM:SS format. The program demonstrates low-level programming concepts including interrupt handling, time conversion, and user input processing.</p>
+            </div>
+
+            <!-- Features -->
+            <div class="project-section">
+                <h2><i class="fas fa-star"></i> Features</h2>
+                <ul>
+                    <li><strong>Real-Time Display:</strong> Shows the time in HH:MM:SS format</li>
+                    <li><strong>Start Command (S):</strong> Start the timer</li>
+                    <li><strong>Stop Command (E):</strong> Stop/pause the timer</li>
+                    <li><strong>Reset Command (R):</strong> Reset the timer to 00:00:00</li>
+                    <li><strong>Exit (ESC):</strong> Press ESC to exit the program safely</li>
+                </ul>
+            </div>
+
+            <!-- How It Works -->
+            <div class="project-section">
+                <h2><i class="fas fa-cogs"></i> How It Works</h2>
+                <p>The program uses basic assembly operations to increment seconds, minutes, and hours, displaying the time dynamically. Custom routines handle:</p>
+                <ul>
+                    <li>Timer command processing</li>
+                    <li>Input handling and validation</li>
+                    <li>Time conversion algorithms</li>
+                    <li>Display output formatting</li>
+                </ul>
+            </div>
+
+            <!-- Getting Started -->
+            <div class="project-section">
+                <h2><i class="fas fa-rocket"></i> Getting Started</h2>
+                <h3 style="color: var(--accent-primary); margin-top: 1rem;">Prerequisites</h3>
+                <ul>
+                    <li>An x86 emulator or a DOS environment (e.g., <a href="https://www.dosbox.com/" target="_blank" style="color: var(--accent-primary);">DOSBox</a>)</li>
+                    <li>An assembler (e.g., <a href="https://www.nasm.us/" target="_blank" style="color: var(--accent-primary);">NASM</a>)</li>
+                </ul>
+                <h3 style="color: var(--accent-primary); margin-top: 1rem;">Running the Program</h3>
+                <ol>
+                    <li>Assemble the code:
+                        <pre style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px; margin: 0.5rem 0; color: var(--accent-primary); overflow-x: auto;">nasm -f bin TimeMaster.asm -o TimeMaster.com</pre>
+                    </li>
+                    <li>Open DOSBox and run:
+                        <pre style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px; margin: 0.5rem 0; color: var(--accent-primary);">TimeMaster.com</pre>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Repository Files -->
+            <div class="project-section">
+                <h2><i class="fas fa-folder-open"></i> Repository Files</h2>
+                <div class="folder-item">
+                    <ul class="file-list">
+                        <li><i class="fas fa-file-code"></i> TimeMaster.asm - Main assembly source code</li>
+                        <li><i class="fas fa-file-alt"></i> README.md - Project documentation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="project-section">
+                <h2><i class="fas fa-code"></i> Technology Stack</h2>
+                <div class="tech-stack">
+                    <span class="tech-item"><i class="fas fa-microchip"></i> x86 Assembly</span>
+                    <span class="tech-item"><i class="fas fa-terminal"></i> DOS</span>
+                    <span class="tech-item"><i class="fas fa-cog"></i> NASM</span>
+                    <span class="tech-item"><i class="fas fa-desktop"></i> DOSBox</span>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="project-actions">
+                <a href="https://github.com/Joseph-George1/TimeMaster_Colage_Microprocessors_project" target="_blank" class="action-btn action-btn-primary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="../index.html#contact" class="action-btn action-btn-secondary">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="project-footer">
+        <div class="container">
+            <p>&copy; 2026 Joseph George Wahba. <a href="../index.html">Back to Portfolio</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AutoAPI Config Propagator - Tool to locate and replace IPv4 addresses across project files">
+    <title>AutoAPI Config Propagator | Joseph George Wahba</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../project-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+        <div class="floating-shape shape-5"></div>
+    </div>
+
+    <!-- Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="nav-brand">Joseph George Wahba</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <a href="../index.html#projects" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Back to Projects
+    </a>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="project-hero-content">
+                <div class="project-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h1>AutoAPI Config Propagator</h1>
+                <p class="project-tagline">An intelligent automation tool for managing IP address configurations across entire project codebases.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <section class="project-content">
+        <div class="container">
+            
+            <!-- Overview -->
+            <div class="project-section">
+                <h2><i class="fas fa-info-circle"></i> Project Overview</h2>
+                <p>AutoAPI Config Propagator is a powerful DevOps automation tool designed to simplify the management of IP addresses across project files. When deploying applications across different environments, updating hardcoded IP addresses can be tedious and error-prone.</p>
+                <p>This tool automates the process by scanning your entire codebase, identifying IPv4 addresses, and replacing them with your desired configuration - all while maintaining safety through backups and confirmation prompts.</p>
+            </div>
+
+            <!-- Features -->
+            <div class="project-section">
+                <h2><i class="fas fa-star"></i> Key Features</h2>
+                <ul>
+                    <li>Automatic external IP detection via public APIs</li>
+                    <li>Custom IP address specification support</li>
+                    <li>Dry-run mode for safe preview of changes</li>
+                    <li>Safe mode with per-IP confirmation prompts</li>
+                    <li>Automated backup creation before modifications</li>
+                    <li>Recursive directory scanning</li>
+                    <li>File extension filtering for targeted updates</li>
+                    <li>Detailed logging and change reporting</li>
+                </ul>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="project-section">
+                <h2><i class="fas fa-code"></i> Technology Stack</h2>
+                <div class="tech-stack">
+                    <span class="tech-item"><i class="fab fa-python"></i> Python 3.7+ (100%)</span>
+                    <span class="tech-item"><i class="fas fa-globe"></i> requests</span>
+                    <span class="tech-item"><i class="fas fa-palette"></i> colorama</span>
+                    <span class="tech-item"><i class="fas fa-balance-scale"></i> MIT License</span>
+                </div>
+            </div>
+
+            <!-- Why use AACP -->
+            <div class="project-section">
+                <h2><i class="fas fa-question-circle"></i> Why use AACP?</h2>
+                <ul>
+                    <li>Replace many hard-coded IPs quickly and consistently</li>
+                    <li>Preview changes safely with <code style="color: var(--accent-primary);">--dry-run</code></li>
+                    <li>Approve changes interactively per IP with <code style="color: var(--accent-primary);">--safe-mode</code></li>
+                    <li>Keep a single timestamped ZIP backup of all originals</li>
+                </ul>
+            </div>
+
+            <!-- CLI Reference -->
+            <div class="project-section">
+                <h2><i class="fas fa-terminal"></i> CLI Reference</h2>
+                <ul>
+                    <li><code style="color: var(--accent-primary);">directory</code> - root path to scan (default: .)</li>
+                    <li><code style="color: var(--accent-primary);">--dry-run</code> - show planned replacements without writing files</li>
+                    <li><code style="color: var(--accent-primary);">--no-backup</code> - do not create a backup archive</li>
+                    <li><code style="color: var(--accent-primary);">-i, --ip &lt;IP&gt;</code> - supply a custom IPv4 address instead of fetching</li>
+                    <li><code style="color: var(--accent-primary);">--safe-mode</code> - prompt interactively per IP before replacing</li>
+                    <li><code style="color: var(--accent-primary);">--save-ip</code> - save fetched IP to ip_address.txt</li>
+                </ul>
+            </div>
+
+            <!-- Actions -->
+            <div class="project-actions">
+                <a href="https://github.com/Joseph-George1/Autoapi-Config-Propagator" target="_blank" class="action-btn action-btn-primary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="../index.html#contact" class="action-btn action-btn-secondary">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="project-footer">
+        <div class="container">
+            <p>&copy; 2026 Joseph George Wahba. <a href="../index.html">Back to Portfolio</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

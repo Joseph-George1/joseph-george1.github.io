@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Hand Tracking Projects - Collection of hand-tracking demos using MediaPipe and OpenCV">
+    <title>AI Hand Tracking Projects | Joseph George Wahba</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../project-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+        <div class="floating-shape shape-5"></div>
+    </div>
+
+    <!-- Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="nav-brand">Joseph George Wahba</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <a href="../index.html#projects" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Back to Projects
+    </a>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="project-hero-content">
+                <div class="project-icon">
+                    <i class="fas fa-hand-paper"></i>
+                </div>
+                <h1>5th Year Engineering Projects</h1>
+                <p class="project-tagline">A collection of 5th year computer engineering projects including hand-tracking demos using MediaPipe and OpenCV.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <section class="project-content">
+        <div class="container">
+            
+            <!-- Overview -->
+            <div class="project-section">
+                <h2><i class="fas fa-info-circle"></i> Repository Overview</h2>
+                <p>This repository contains a collection of 5th year computer engineering projects developed for teamwork and learning. The main focus is on AI and computer vision applications.</p>
+            </div>
+
+            <!-- Repository Structure -->
+            <div class="project-section">
+                <h2><i class="fas fa-folder-open"></i> Repository Structure</h2>
+                
+                <div class="folder-item">
+                    <h3><i class="fas fa-folder"></i> AI-App/</h3>
+                    <p class="folder-brief">Hand-tracking demos using MediaPipe and OpenCV for gesture-based interfaces.</p>
+                    <ul class="file-list">
+                        <li><i class="fas fa-folder"></i> hand/ - HandTracker utility module</li>
+                        <li><i class="fab fa-python"></i> sign_to_voice.py - Maps hand poses to speech using pyttsx3</li>
+                        <li><i class="fab fa-python"></i> volume-hand-controle.py - Controls system volume via thumb-index distance</li>
+                        <li><i class="fas fa-file-alt"></i> requirements.txt - Project dependencies</li>
+                        <li><i class="fas fa-file-alt"></i> README.md - Usage documentation</li>
+                    </ul>
+                </div>
+
+                <div class="folder-item">
+                    <h3><i class="fas fa-folder"></i> Lang-Translation/</h3>
+                    <p class="folder-brief">Future project folder for language translation applications.</p>
+                </div>
+
+                <div class="folder-item">
+                    <h3><i class="fas fa-folder"></i> ML/</h3>
+                    <p class="folder-brief">Future project folder for machine learning experiments.</p>
+                </div>
+
+                <div class="folder-item">
+                    <h3><i class="fas fa-folder"></i> Test4/</h3>
+                    <p class="folder-brief">Testing and experimental code.</p>
+                </div>
+            </div>
+
+            <!-- AI-App Features -->
+            <div class="project-section">
+                <h2><i class="fas fa-star"></i> AI-App Features</h2>
+                <h3 style="color: var(--accent-primary); margin-top: 1rem;">HandTracker Class</h3>
+                <p>A wrapper class for MediaPipe Hands that provides:</p>
+                <ul>
+                    <li><code style="color: var(--accent-primary);">process(frame, return_pixel_landmarks=False)</code> - Process BGR OpenCV frames</li>
+                    <li><code style="color: var(--accent-primary);">get_hands_landmarks()</code> - Returns landmarks as (id, cx, cy) tuples per hand</li>
+                    <li><code style="color: var(--accent-primary);">draw_landmarks(frame)</code> - Draw landmarks onto frames</li>
+                    <li><code style="color: var(--accent-primary);">close()</code> - Release tracker resources</li>
+                </ul>
+                
+                <h3 style="color: var(--accent-primary); margin-top: 1.5rem;">Sign to Voice Demo</h3>
+                <p>Uses HandTracker with a rule-based recognizer to map simple hand poses to speech via pyttsx3 text-to-speech engine.</p>
+                
+                <h3 style="color: var(--accent-primary); margin-top: 1.5rem;">Volume Control Demo</h3>
+                <p>Maps thumb-index finger distance to system volume. On Windows with pycaw installed, it directly controls system volume; otherwise displays mapped volume on-screen.</p>
+            </div>
+
+            <!-- Getting Started -->
+            <div class="project-section">
+                <h2><i class="fas fa-rocket"></i> Getting Started</h2>
+                <p>Install dependencies (recommended to use a virtual environment):</p>
+                <pre style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px; margin: 0.5rem 0; color: var(--accent-primary); overflow-x: auto;">python -m pip install -r requirements.txt</pre>
+                
+                <p style="margin-top: 1rem;">For Windows volume control, additionally install:</p>
+                <pre style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px; margin: 0.5rem 0; color: var(--accent-primary); overflow-x: auto;">python -m pip install pycaw comtypes</pre>
+                
+                <h3 style="color: var(--accent-primary); margin-top: 1.5rem;">Running the Demos</h3>
+                <pre style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px; margin: 0.5rem 0; color: var(--text-secondary); overflow-x: auto;"><span style="color: var(--accent-secondary);"># Sign to Voice demo</span>
+python sign_to_voice.py
+
+<span style="color: var(--accent-secondary);"># Volume control demo</span>
+python volume-hand-controle.py</pre>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="project-section">
+                <h2><i class="fas fa-code"></i> Technology Stack</h2>
+                <div class="tech-stack">
+                    <span class="tech-item"><i class="fab fa-python"></i> Python (100%)</span>
+                    <span class="tech-item"><i class="fas fa-eye"></i> OpenCV</span>
+                    <span class="tech-item"><i class="fas fa-hand-sparkles"></i> MediaPipe</span>
+                    <span class="tech-item"><i class="fas fa-brain"></i> Computer Vision</span>
+                    <span class="tech-item"><i class="fas fa-volume-up"></i> pycaw</span>
+                    <span class="tech-item"><i class="fas fa-microphone"></i> pyttsx3</span>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="project-actions">
+                <a href="https://github.com/Joseph-George1/5th-year-eng-projects" target="_blank" class="action-btn action-btn-primary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="../index.html#contact" class="action-btn action-btn-secondary">
+                    <i class="fas fa-envelope"></i> Contact for Demo
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="project-footer">
+        <div class="container">
+            <p>&copy; 2026 Joseph George Wahba. <a href="../index.html">Back to Portfolio</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
