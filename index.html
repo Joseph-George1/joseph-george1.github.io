@@ -73,6 +73,52 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-glow"></div>
+        
+        <!-- Connected Dots Grid (Cyber Theme) -->
+        <canvas id="cyberGrid" class="cyber-grid"></canvas>
+        
+        <!-- Floating Space Objects -->
+        <div class="space-objects">
+            <!-- Stars -->
+            <i class="fas fa-star space-obj obj-1"></i>
+            <i class="fas fa-star space-obj obj-2"></i>
+            <i class="fas fa-star space-obj obj-3"></i>
+            <i class="fas fa-star space-obj obj-4"></i>
+            <i class="fas fa-star space-obj obj-5"></i>
+            <i class="fas fa-star space-obj obj-13"></i>
+            <i class="fas fa-star space-obj obj-14"></i>
+            <i class="fas fa-star space-obj obj-15"></i>
+            
+            <!-- Space Objects -->
+            <i class="fas fa-rocket space-obj obj-6"></i>
+            <i class="fas fa-satellite space-obj obj-7"></i>
+            <i class="fas fa-moon space-obj obj-8"></i>
+            <i class="fas fa-meteor space-obj obj-9"></i>
+            <i class="fas fa-shuttle-space space-obj obj-10"></i>
+            <i class="fas fa-satellite-dish space-obj obj-11"></i>
+            <i class="fas fa-globe space-obj obj-12"></i>
+            
+            <!-- Extra Objects -->
+            <i class="fas fa-code space-obj obj-16"></i>
+            <i class="fas fa-terminal space-obj obj-17"></i>
+            <i class="fas fa-microchip space-obj obj-18"></i>
+            <i class="fas fa-database space-obj obj-19"></i>
+            <i class="fas fa-network-wired space-obj obj-20"></i>
+            <i class="fas fa-shield-halved space-obj obj-21"></i>
+            <i class="fas fa-bug space-obj obj-22"></i>
+            <i class="fas fa-laptop-code space-obj obj-23"></i>
+            
+            <!-- Blinking Glowing Orbs -->
+            <div class="glow-orb orb-1"></div>
+            <div class="glow-orb orb-2"></div>
+            <div class="glow-orb orb-3"></div>
+            <div class="glow-orb orb-4"></div>
+            <div class="glow-orb orb-5"></div>
+            <div class="glow-orb orb-6"></div>
+            <div class="glow-orb orb-7"></div>
+            <div class="glow-orb orb-8"></div>
+        </div>
+        
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Joseph George Wahba</h1>
@@ -95,35 +141,69 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="stats-section">
+    <section class="stats-section cyber-section">
+        <canvas class="cyber-grid-bg"></canvas>
+        <div class="cyber-objects">
+            <i class="fas fa-chart-line cyber-obj c-obj-1"></i>
+            <i class="fas fa-trophy cyber-obj c-obj-2"></i>
+            <div class="glow-orb-sm orb-sm-1"></div>
+            <div class="glow-orb-sm orb-sm-2"></div>
+        </div>
         <div class="container">
             <div class="stats-grid">
-                <div class="stat-item">
-                    <i class="fas fa-code"></i>
-                    <span class="stat-number" id="stat-projects" data-target="0">0</span>
-                    <span class="stat-label">Projects</span>
+                <div class="stat-item stat-flip-card">
+                    <div class="stat-flip-inner">
+                        <div class="stat-flip-front">
+                            <i class="fas fa-code"></i>
+                            <span class="stat-number" id="stat-projects" data-target="0">0</span>
+                            <span class="stat-label">Main Projects</span>
+                        </div>
+                        <div class="stat-flip-back">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span class="stat-number" id="stat-subprojects" data-target="0">0</span>
+                            <span class="stat-label">College Projects</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="stat-item">
                     <i class="fas fa-certificate"></i>
                     <span class="stat-number" id="stat-certificates" data-target="0">0</span>
                     <span class="stat-label">Certificates</span>
                 </div>
-                <div class="stat-item">
-                    <i class="fab fa-github"></i>
-                    <span class="stat-number" id="stat-repos" data-target="0">0</span>
-                    <span class="stat-label">Repositories</span>
+                <div class="stat-item stat-flip-card">
+                    <div class="stat-flip-inner">
+                        <div class="stat-flip-front">
+                            <i class="fab fa-github"></i>
+                            <span class="stat-number" id="stat-repos" data-target="0">0</span>
+                            <span class="stat-label">Repositories</span>
+                        </div>
+                        <div class="stat-flip-back">
+                            <i class="fas fa-code-commit"></i>
+                            <span class="stat-number" id="stat-commits">--</span>
+                            <span class="stat-label">Total Commits</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="stat-item">
-                    <i class="fas fa-tools"></i>
-                    <span class="stat-number" id="stat-technologies" data-target="0">0</span>
-                    <span class="stat-label">Technologies</span>
+                    <i class="fas fa-star"></i>
+                    <span class="stat-number" id="stat-stars" data-target="0">0</span>
+                    <span class="stat-label">GitHub Stars</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about cyber-section">
+        <canvas class="cyber-grid-bg"></canvas>
+        <div class="cyber-objects">
+            <i class="fas fa-user-astronaut cyber-obj c-obj-1"></i>
+            <i class="fas fa-brain cyber-obj c-obj-2"></i>
+            <i class="fas fa-lightbulb cyber-obj c-obj-3"></i>
+            <div class="glow-orb-sm orb-sm-1"></div>
+            <div class="glow-orb-sm orb-sm-2"></div>
+            <div class="glow-orb-sm orb-sm-3"></div>
+        </div>
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
@@ -153,7 +233,17 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <section id="skills" class="skills cyber-section">
+        <canvas class="cyber-grid-bg"></canvas>
+        <div class="cyber-objects">
+            <i class="fas fa-cogs cyber-obj c-obj-1"></i>
+            <i class="fas fa-server cyber-obj c-obj-2"></i>
+            <i class="fas fa-lock cyber-obj c-obj-3"></i>
+            <i class="fas fa-code-branch cyber-obj c-obj-4"></i>
+            <div class="glow-orb-sm orb-sm-1"></div>
+            <div class="glow-orb-sm orb-sm-2"></div>
+            <div class="glow-orb-sm orb-sm-3"></div>
+        </div>
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
             <div class="skills-grid">
@@ -243,10 +333,21 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title">Projects & Achievements</h2>
-            <div class="projects-grid">
+            <div class="main-projects-wrapper cyber-section">
+                <canvas class="cyber-grid-bg"></canvas>
+                <div class="cyber-objects">
+                    <i class="fas fa-rocket cyber-obj c-obj-1"></i>
+                    <i class="fas fa-code cyber-obj c-obj-2"></i>
+                    <i class="fas fa-shield-halved cyber-obj c-obj-3"></i>
+                    <i class="fas fa-terminal cyber-obj c-obj-4"></i>
+                    <div class="glow-orb-sm orb-sm-1"></div>
+                    <div class="glow-orb-sm orb-sm-2"></div>
+                    <div class="glow-orb-sm orb-sm-3"></div>
+                </div>
+                <div class="projects-grid" id="main-projects-grid">
                 
                 <!-- Teeth Management System -->
-                <a href="projects/thoutha.html" class="project-card-link">
+                <div class="project-card-link" data-href="projects/thoutha.html">
                     <div class="project-card clickable">
                         <div class="project-header">
                             <i class="fas fa-tooth"></i>
@@ -263,36 +364,15 @@
                             <span class="tech-tag">Dart</span>
                         </div>
                         <div class="project-links">
+                            <a href="https://thoutha.page" target="_blank" class="project-link live-demo">
+                                <i class="fas fa-external-link-alt"></i> Production Site
+                            </a>
                             <span class="project-link learn-more">
                                 <i class="fas fa-arrow-right"></i> Learn More
                             </span>
                         </div>
                     </div>
-                </a>
-
-                <!-- 5th Year Engineering Projects -->
-                <a href="projects/hand-tracking.html" class="project-card-link">
-                    <div class="project-card clickable">
-                        <div class="project-header">
-                            <i class="fas fa-hand-paper"></i>
-                            <h3>5th Year Engineering Projects</h3>
-                        </div>
-                        <p class="project-description">
-                            Collection of 5th year engineering projects including hand-tracking demos using MediaPipe and OpenCV, sign-to-voice conversion, and gesture-based controls.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">MediaPipe</span>
-                            <span class="tech-tag">Computer Vision</span>
-                        </div>
-                        <div class="project-links">
-                            <span class="project-link learn-more">
-                                <i class="fas fa-arrow-right"></i> Learn More
-                            </span>
-                        </div>
-                    </div>
-                </a>
+                </div>
 
                 <!-- AutoAPI Config Propagator -->
                 <a href="projects/autoapi.html" class="project-card-link">
@@ -437,13 +517,24 @@
                         </div>
                     </div>
                 </a>
-                </div>
 
+                </div>
             </div>
 
             <!-- Old Projects Subsection -->
             <h3 class="subsection-title">College Projects</h3>
-            <div class="projects-grid">
+            <div class="college-projects-wrapper cyber-section">
+                <canvas class="cyber-grid-bg"></canvas>
+                <div class="cyber-objects">
+                    <i class="fas fa-university cyber-obj c-obj-1"></i>
+                    <i class="fas fa-book-open cyber-obj c-obj-2"></i>
+                    <i class="fas fa-flask cyber-obj c-obj-3"></i>
+                    <i class="fas fa-microscope cyber-obj c-obj-4"></i>
+                    <div class="glow-orb-sm orb-sm-1"></div>
+                    <div class="glow-orb-sm orb-sm-2"></div>
+                    <div class="glow-orb-sm orb-sm-3"></div>
+                </div>
+                <div class="projects-grid" id="college-projects-grid">
 
                 <!-- 5th Year Engineering Projects -->
                 <a href="projects/hand-tracking.html" class="project-card-link">
@@ -536,12 +627,21 @@
                     </div>
                 </a>
 
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Certificates Section -->
-    <section id="certificates" class="certificates">
+    <section id="certificates" class="certificates cyber-section">
+        <canvas class="cyber-grid-bg"></canvas>
+        <div class="cyber-objects">
+            <i class="fas fa-award cyber-obj c-obj-1"></i>
+            <i class="fas fa-medal cyber-obj c-obj-2"></i>
+            <i class="fas fa-graduation-cap cyber-obj c-obj-3"></i>
+            <div class="glow-orb-sm orb-sm-1"></div>
+            <div class="glow-orb-sm orb-sm-2"></div>
+        </div>
         <div class="container">
             <h2 class="section-title">Certificates & Education</h2>
             <div class="certificates-grid">
@@ -647,7 +747,16 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact cyber-section">
+        <canvas class="cyber-grid-bg"></canvas>
+        <div class="cyber-objects">
+            <i class="fas fa-paper-plane cyber-obj c-obj-1"></i>
+            <i class="fas fa-comments cyber-obj c-obj-2"></i>
+            <i class="fas fa-handshake cyber-obj c-obj-3"></i>
+            <div class="glow-orb-sm orb-sm-1"></div>
+            <div class="glow-orb-sm orb-sm-2"></div>
+            <div class="glow-orb-sm orb-sm-3"></div>
+        </div>
         <div class="container">
             <h2 class="section-title">Get in Touch</h2>
             <div class="contact-content">

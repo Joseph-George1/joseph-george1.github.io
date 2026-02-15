@@ -99,57 +99,174 @@ if (backToTopButton) {
 let statsAnimated = false;
 let dynamicStats = {
     projects: 0,
+    subprojects: 0,
     certificates: 0,
     repos: 0,
-    technologies: 0
+    stars: 0,
+    commits: 0
 };
 
 // Calculate dynamic stats from page content
 function calculateDynamicStats() {
-    // Count project cards
-    const projectCards = document.querySelectorAll('.project-card');
-    dynamicStats.projects = projectCards.length;
+    // Count main project cards
+    const mainProjectsGrid = document.getElementById('main-projects-grid');
+    const mainProjects = mainProjectsGrid ? mainProjectsGrid.querySelectorAll('.project-card') : [];
+    dynamicStats.projects = mainProjects.length;
+    
+    // Count college/sub project cards
+    const collegeProjectsGrid = document.getElementById('college-projects-grid');
+    const collegeProjects = collegeProjectsGrid ? collegeProjectsGrid.querySelectorAll('.project-card') : [];
+    dynamicStats.subprojects = collegeProjects.length;
     
     // Count certificate cards
     const certificateCards = document.querySelectorAll('.certificate-card');
     dynamicStats.certificates = certificateCards.length;
     
-    // Count unique technologies from tech-tags
-    const techTags = document.querySelectorAll('.tech-tag');
-    const uniqueTechs = new Set();
-    techTags.forEach(tag => {
-        const tech = tag.textContent.trim().toLowerCase();
-        uniqueTechs.add(tech);
-    });
-    dynamicStats.technologies = uniqueTechs.size;
-    
-    // Update data-target attributes
+    // Update data-target attributes and text
     const statProjects = document.getElementById('stat-projects');
+    const statSubprojects = document.getElementById('stat-subprojects');
     const statCertificates = document.getElementById('stat-certificates');
-    const statTechnologies = document.getElementById('stat-technologies');
     
-    if (statProjects) statProjects.setAttribute('data-target', dynamicStats.projects);
+    if (statProjects) {
+        statProjects.setAttribute('data-target', dynamicStats.projects);
+        statProjects.textContent = dynamicStats.projects + '+';
+    }
+    if (statSubprojects) {
+        statSubprojects.setAttribute('data-target', dynamicStats.subprojects);
+        statSubprojects.textContent = dynamicStats.subprojects + '+';
+    }
     if (statCertificates) statCertificates.setAttribute('data-target', dynamicStats.certificates);
-    if (statTechnologies) statTechnologies.setAttribute('data-target', dynamicStats.technologies);
 }
 
-// Fetch GitHub repo count
+// Helper function to format stats (real numbers, no + sign)
+function formatStat(num) {
+    if (typeof num !== 'number' || isNaN(num)) return '—';
+    return num.toLocaleString();
+}
+
+// Fetch GitHub stats (repos, total stars, and commits)
 async function fetchGitHubRepoCount() {
-    const username = 'joseph-george1';
+    const username = 'Joseph-George1';
+    const statCommits = document.getElementById('stat-commits');
+    const statRepos = document.getElementById('stat-repos');
+    const statStars = document.getElementById('stat-stars');
+    const COMMITS_CACHE_KEY = 'github_commits_cache';
+    const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
+    
     try {
-        const response = await fetch(`https://api.github.com/users/${username}`);
-        if (response.ok) {
-            const userData = await response.json();
-            dynamicStats.repos = userData.public_repos;
-            const statRepos = document.getElementById('stat-repos');
-            if (statRepos) statRepos.setAttribute('data-target', dynamicStats.repos);
+        // Fetch user data for repo count
+        const userResponse = await fetch(`https://api.github.com/users/${username}`);
+        if (userResponse.ok) {
+            const userData = await userResponse.json();
+            if (userData && typeof userData.public_repos === 'number') {
+                dynamicStats.repos = userData.public_repos;
+                if (statRepos) {
+                    statRepos.setAttribute('data-target', dynamicStats.repos);
+                    statRepos.textContent = formatStat(dynamicStats.repos);
+                }
+            }
+        }
+        
+        // Fetch all repos to calculate total stars
+        const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+        if (reposResponse.ok) {
+            const repos = await reposResponse.json();
+            
+            // Make sure repos is an array (not an error object)
+            if (!Array.isArray(repos)) {
+                console.warn('GitHub API did not return repos array');
+                showFallbackCommits(statCommits, COMMITS_CACHE_KEY);
+                return;
+            }
+            
+            let totalStars = 0;
+            
+            // Calculate stars from all repos
+            repos.forEach(repo => {
+                totalStars += repo.stargazers_count || 0;
+            });
+            dynamicStats.stars = totalStars;
+            if (statStars) {
+                statStars.setAttribute('data-target', dynamicStats.stars);
+                statStars.textContent = formatStat(dynamicStats.stars);
+            }
+            
+            // For commits: try cache first (expensive API calls)
+            let useCache = false;
+            try {
+                const cached = localStorage.getItem(COMMITS_CACHE_KEY);
+                if (cached) {
+                    const { commits, timestamp } = JSON.parse(cached);
+                    if (Date.now() - timestamp < CACHE_DURATION && typeof commits === 'number' && !isNaN(commits)) {
+                        dynamicStats.commits = commits;
+                        if (statCommits) {
+                            statCommits.textContent = formatStat(commits);
+                        }
+                        console.log('Commits loaded from cache');
+                        useCache = true;
+                    }
+                }
+            } catch (e) {}
+            
+            // Fetch fresh commits if no valid cache
+            if (!useCache) {
+                const ownedRepos = repos.filter(r => !r.fork);
+                
+                const commitPromises = ownedRepos.map(async (repo) => {
+                    try {
+                        // Use stats/contributors API for accurate commit counts
+                        const res = await fetch(`https://api.github.com/repos/${username}/${repo.name}/stats/contributors`);
+                        if (res.ok) {
+                            const stats = await res.json();
+                            if (Array.isArray(stats)) {
+                                const me = stats.find(c => c.author && c.author.login && c.author.login.toLowerCase() === username.toLowerCase());
+                                return me ? (me.total || 0) : 0;
+                            }
+                        }
+                    } catch (e) {}
+                    return 0;
+                });
+                
+                const commitCounts = await Promise.all(commitPromises);
+                const totalCommits = commitCounts.reduce((sum, c) => sum + (c || 0), 0);
+                dynamicStats.commits = totalCommits;
+                
+                if (statCommits) {
+                    statCommits.textContent = formatStat(totalCommits);
+                }
+                
+                // Cache commits only if valid
+                if (!isNaN(totalCommits) && totalCommits > 0) {
+                    try {
+                        localStorage.setItem(COMMITS_CACHE_KEY, JSON.stringify({
+                            commits: totalCommits,
+                            timestamp: Date.now()
+                        }));
+                    } catch (e) {}
+                }
+            }
+        } else {
+            showFallbackCommits(statCommits, COMMITS_CACHE_KEY);
         }
     } catch (error) {
-        console.error('Error fetching GitHub repo count:', error);
-        // Fallback: count from fetched repos
-        const repoCards = document.querySelectorAll('#github-projects .project-card');
-        dynamicStats.repos = repoCards.length || 10;
+        console.error('Error fetching GitHub stats:', error);
+        showFallbackCommits(statCommits, COMMITS_CACHE_KEY);
     }
+}
+
+// Helper function to show fallback commits
+function showFallbackCommits(statCommits, cacheKey) {
+    try {
+        const cached = localStorage.getItem(cacheKey);
+        if (cached && statCommits) {
+            const { commits } = JSON.parse(cached);
+            if (typeof commits === 'number' && !isNaN(commits)) {
+                statCommits.textContent = formatStat(commits);
+                return;
+            }
+        }
+    } catch (e) {}
+    if (statCommits) statCommits.textContent = '—';
 }
 
 function animateStats() {
@@ -371,6 +488,19 @@ document.addEventListener('click', (e) => {
             alert(`Project placeholder: ${repoName}\n\nPlease update the href attribute with your actual project URL.`);
         }
     }
+    
+    // Handle div-based project cards (for cards with nested links like Live Demo)
+    const projectCardDiv = e.target.closest('div.project-card-link[data-href]');
+    if (projectCardDiv) {
+        // Don't navigate if clicking on an actual link inside the card
+        if (e.target.closest('a')) {
+            return;
+        }
+        const href = projectCardDiv.getAttribute('data-href');
+        if (href) {
+            window.location.href = href;
+        }
+    }
 });
 
 // Update project links with actual GitHub URLs
@@ -388,6 +518,106 @@ function updateProjectLinks() {
     });
 }
 
+// ============================================
+// CYBER GRID - Connected Dots Animation
+// ============================================
+function initCyberGrid() {
+    // Initialize the main hero canvas
+    const heroCanvas = document.getElementById('cyberGrid');
+    if (heroCanvas) {
+        initCanvasGrid(heroCanvas, 15000, 150); // More particles, larger connection distance
+    }
+    
+    // Initialize all section canvases
+    const sectionCanvases = document.querySelectorAll('.cyber-grid-bg');
+    sectionCanvases.forEach(canvas => {
+        initCanvasGrid(canvas, 25000, 120); // Fewer particles, smaller connection distance
+    });
+}
+
+function initCanvasGrid(canvas, particleDensity, maxDistance) {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationId;
+    
+    function resize() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        initParticles();
+    }
+    
+    function initParticles() {
+        particles = [];
+        const numParticles = Math.floor((canvas.width * canvas.height) / particleDensity);
+        
+        for (let i = 0; i < numParticles; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.4,
+                vy: (Math.random() - 0.5) * 0.4,
+                radius: Math.random() * 1.5 + 0.5
+            });
+        }
+    }
+    
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw connections
+        ctx.lineWidth = 1;
+        
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < maxDistance) {
+                    const opacity = (1 - distance / maxDistance) * 0.12;
+                    ctx.strokeStyle = `rgba(100, 255, 218, ${opacity})`;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+        
+        // Draw particles
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(100, 255, 218, 0.25)';
+            ctx.fill();
+        });
+    }
+    
+    function update() {
+        particles.forEach(p => {
+            p.x += p.vx;
+            p.y += p.vy;
+            
+            // Bounce off edges
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        });
+    }
+    
+    function animate() {
+        update();
+        draw();
+        animationId = requestAnimationFrame(animate);
+    }
+    
+    // Initialize
+    resize();
+    animate();
+    
+    // Handle resize
+    window.addEventListener('resize', resize);
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     fetchGitHubRepos();
@@ -398,6 +628,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Fetch GitHub repo count for stats
     fetchGitHubRepoCount();
+    
+    // Initialize cyber grid
+    initCyberGrid();
     
     // Add a small delay for smooth initial animations
     setTimeout(() => {

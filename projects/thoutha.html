@@ -133,11 +133,11 @@
             <!-- Stats -->
             <div class="project-section">
                 <h2><i class="fas fa-chart-bar"></i> Project Stats</h2>
-                <div class="tech-stack">
-                    <span class="tech-item"><i class="fas fa-star"></i> 5 Stars</span>
-                    <span class="tech-item"><i class="fas fa-code-branch"></i> 2 Forks</span>
-                    <span class="tech-item"><i class="fas fa-users"></i> 8 Contributors</span>
-                    <span class="tech-item"><i class="fas fa-balance-scale"></i> AGPL-3.0</span>
+                <div class="tech-stack" id="repo-stats">
+                    <span class="tech-item"><i class="fas fa-star"></i> <span id="repo-stars">--</span> Stars</span>
+                    <span class="tech-item"><i class="fas fa-code-branch"></i> <span id="repo-forks">--</span> Forks</span>
+                    <span class="tech-item"><i class="fas fa-users"></i> <span id="repo-contributors">--</span> Contributors</span>
+                    <span class="tech-item"><i class="fas fa-balance-scale"></i> <span id="repo-license">--</span></span>
                 </div>
             </div>
 
@@ -161,5 +161,45 @@
         </div>
     </footer>
 
+    <script>
+        // Fetch live stats from GitHub API
+        const REPO_OWNER = 'Joseph-George1';
+        const REPO_NAME = 'Teeth-Management-System';
+
+        async function fetchRepoStats() {
+            try {
+                // Fetch repo info (stars, forks, license)
+                const repoResponse = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`);
+                if (repoResponse.ok) {
+                    const repoData = await repoResponse.json();
+                    document.getElementById('repo-stars').textContent = repoData.stargazers_count;
+                    document.getElementById('repo-forks').textContent = repoData.forks_count;
+                    document.getElementById('repo-license').textContent = repoData.license?.spdx_id || 'No License';
+                }
+
+                // Fetch contributors count
+                const contributorsResponse = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contributors?per_page=1`);
+                if (contributorsResponse.ok) {
+                    // Get total count from Link header
+                    const linkHeader = contributorsResponse.headers.get('Link');
+                    if (linkHeader) {
+                        const match = linkHeader.match(/page=(\d+)>; rel="last"/);
+                        if (match) {
+                            document.getElementById('repo-contributors').textContent = match[1];
+                        }
+                    } else {
+                        // If no pagination, count directly
+                        const contributors = await contributorsResponse.json();
+                        document.getElementById('repo-contributors').textContent = Array.isArray(contributors) ? contributors.length : '--';
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching repo stats:', error);
+            }
+        }
+
+        // Fetch stats on page load
+        fetchRepoStats();
+    </script>
 </body>
 </html>

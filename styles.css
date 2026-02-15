@@ -428,6 +428,194 @@ body {
     animation: fadeInUp 1s ease forwards;
 }
 
+/* Connected Dots Cyber Grid */
+.cyber-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Floating Space Objects */
+.space-objects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.space-obj {
+    position: absolute;
+    color: var(--accent-primary);
+    opacity: 0.15;
+    animation: float 20s ease-in-out infinite;
+}
+
+/* Individual object positions and styles */
+.obj-1 { top: 10%; left: 5%; font-size: 0.8rem; opacity: 0.2; animation-delay: 0s; animation-duration: 15s; }
+.obj-2 { top: 20%; right: 10%; font-size: 0.6rem; opacity: 0.18; animation-delay: 2s; animation-duration: 18s; }
+.obj-3 { top: 60%; left: 15%; font-size: 1rem; opacity: 0.22; animation-delay: 4s; animation-duration: 22s; }
+.obj-4 { bottom: 20%; right: 20%; font-size: 0.5rem; opacity: 0.16; animation-delay: 1s; animation-duration: 16s; }
+.obj-5 { top: 40%; left: 8%; font-size: 0.7rem; opacity: 0.2; animation-delay: 3s; animation-duration: 19s; }
+.obj-6 { top: 15%; right: 25%; font-size: 1.5rem; opacity: 0.12; --rot: -45deg; animation: floatRotated 25s ease-in-out infinite; }
+.obj-7 { bottom: 30%; left: 25%; font-size: 1.2rem; opacity: 0.1; animation-delay: 5s; animation-duration: 28s; }
+.obj-8 { top: 70%; right: 8%; font-size: 1.8rem; opacity: 0.08; animation-delay: 2s; animation-duration: 30s; }
+.obj-9 { top: 30%; left: 30%; font-size: 1rem; opacity: 0.12; --rot: 30deg; animation: floatRotated 20s ease-in-out infinite; animation-delay: 7s; }
+.obj-10 { bottom: 15%; right: 35%; font-size: 1.3rem; opacity: 0.1; --rot: -30deg; animation: floatRotated 26s ease-in-out infinite; animation-delay: 4s; }
+.obj-11 { top: 50%; right: 5%; font-size: 1.1rem; opacity: 0.1; animation-delay: 6s; animation-duration: 24s; }
+.obj-12 { bottom: 40%; left: 5%; font-size: 2rem; opacity: 0.06; animation-delay: 3s; animation-duration: 35s; }
+.obj-13 { top: 85%; left: 40%; font-size: 0.6rem; opacity: 0.2; animation-delay: 8s; animation-duration: 17s; }
+.obj-14 { top: 5%; left: 50%; font-size: 0.9rem; opacity: 0.18; animation-delay: 1s; animation-duration: 21s; }
+.obj-15 { top: 45%; right: 15%; font-size: 0.5rem; opacity: 0.2; animation-delay: 9s; animation-duration: 14s; }
+
+/* Extra tech objects */
+.obj-16 { top: 25%; left: 45%; font-size: 1.1rem; opacity: 0.1; animation-delay: 2s; animation-duration: 23s; }
+.obj-17 { bottom: 25%; right: 12%; font-size: 0.9rem; opacity: 0.12; animation-delay: 4s; animation-duration: 20s; }
+.obj-18 { top: 75%; left: 35%; font-size: 1.3rem; opacity: 0.08; animation-delay: 6s; animation-duration: 27s; }
+.obj-19 { top: 35%; right: 40%; font-size: 1rem; opacity: 0.1; animation-delay: 3s; animation-duration: 19s; }
+.obj-20 { bottom: 45%; left: 42%; font-size: 1.2rem; opacity: 0.09; animation-delay: 5s; animation-duration: 24s; }
+.obj-21 { top: 12%; left: 70%; font-size: 1rem; opacity: 0.11; animation-delay: 7s; animation-duration: 22s; }
+.obj-22 { bottom: 12%; left: 20%; font-size: 0.8rem; opacity: 0.14; animation-delay: 1s; animation-duration: 18s; }
+.obj-23 { top: 55%; right: 30%; font-size: 1.4rem; opacity: 0.08; animation-delay: 8s; animation-duration: 26s; }
+
+/* Blinking Glowing Orbs */
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    box-shadow: 0 0 20px var(--accent-primary), 0 0 40px var(--accent-primary), 0 0 60px rgba(100, 255, 218, 0.3);
+    animation: blink 3s ease-in-out infinite, floatOrb 15s ease-in-out infinite;
+}
+
+.orb-1 { top: 15%; left: 10%; width: 6px; height: 6px; opacity: 0.4; animation-delay: 0s; }
+.orb-2 { top: 30%; right: 15%; width: 4px; height: 4px; opacity: 0.5; animation-delay: 0.5s; }
+.orb-3 { bottom: 35%; left: 20%; width: 8px; height: 8px; opacity: 0.3; animation-delay: 1s; }
+.orb-4 { top: 60%; right: 25%; width: 5px; height: 5px; opacity: 0.45; animation-delay: 1.5s; }
+.orb-5 { bottom: 20%; right: 8%; width: 7px; height: 7px; opacity: 0.35; animation-delay: 2s; }
+.orb-6 { top: 80%; left: 35%; width: 4px; height: 4px; opacity: 0.5; animation-delay: 2.5s; }
+.orb-7 { top: 8%; right: 40%; width: 6px; height: 6px; opacity: 0.4; animation-delay: 0.8s; }
+.orb-8 { bottom: 50%; left: 8%; width: 5px; height: 5px; opacity: 0.45; animation-delay: 1.8s; }
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 0.2;
+        box-shadow: 0 0 10px var(--accent-primary), 0 0 20px rgba(100, 255, 218, 0.2);
+    }
+    50% {
+        opacity: 0.7;
+        box-shadow: 0 0 30px var(--accent-primary), 0 0 60px var(--accent-primary), 0 0 80px rgba(100, 255, 218, 0.4);
+    }
+}
+
+@keyframes floatOrb {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+    33% {
+        transform: translateY(-15px) translateX(8px);
+    }
+    66% {
+        transform: translateY(10px) translateX(-12px);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px);
+    }
+    50% {
+        transform: translateY(-10px) translateX(-15px);
+    }
+    75% {
+        transform: translateY(-30px) translateX(5px);
+    }
+}
+
+@keyframes floatRotated {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) rotate(var(--rot, 0deg));
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px) rotate(var(--rot, 0deg));
+    }
+    50% {
+        transform: translateY(-10px) translateX(-15px) rotate(var(--rot, 0deg));
+    }
+    75% {
+        transform: translateY(-30px) translateX(5px) rotate(var(--rot, 0deg));
+    }
+}
+
+/* ============================================
+   CYBER THEME FOR ALL SECTIONS
+   ============================================ */
+.cyber-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-grid-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cyber-objects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.cyber-obj {
+    position: absolute;
+    color: var(--accent-primary);
+    opacity: 0.12;
+    animation: float 20s ease-in-out infinite;
+}
+
+.c-obj-1 { top: 15%; left: 8%; font-size: 1.5rem; opacity: 0.1; animation-delay: 0s; animation-duration: 18s; }
+.c-obj-2 { top: 25%; right: 12%; font-size: 1.3rem; opacity: 0.08; animation-delay: 2s; animation-duration: 22s; }
+.c-obj-3 { bottom: 20%; left: 15%; font-size: 1.2rem; opacity: 0.1; animation-delay: 4s; animation-duration: 20s; }
+.c-obj-4 { bottom: 30%; right: 10%; font-size: 1.4rem; opacity: 0.09; animation-delay: 3s; animation-duration: 24s; }
+
+/* Small glowing orbs for sections */
+.glow-orb-sm {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    box-shadow: 0 0 15px var(--accent-primary), 0 0 30px rgba(100, 255, 218, 0.3);
+    animation: blink 4s ease-in-out infinite, floatOrb 12s ease-in-out infinite;
+}
+
+.orb-sm-1 { top: 20%; right: 20%; width: 5px; height: 5px; opacity: 0.35; animation-delay: 0s; }
+.orb-sm-2 { bottom: 25%; left: 25%; width: 4px; height: 4px; opacity: 0.4; animation-delay: 1.5s; }
+.orb-sm-3 { top: 60%; right: 8%; width: 6px; height: 6px; opacity: 0.3; animation-delay: 3s; }
+
+/* Ensure container stays above cyber elements */
+.cyber-section > .container {
+    position: relative;
+    z-index: 1;
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -616,6 +804,7 @@ body {
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
+    min-height: 180px;
     overflow: hidden;
 }
 
@@ -662,6 +851,97 @@ body {
 }
 
 .stat-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Stat Flip Card */
+.stat-flip-card {
+    perspective: 1000px;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    min-height: 180px;
+}
+
+.stat-flip-card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.stat-flip-card::before {
+    display: none !important;
+}
+
+.stat-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 180px;
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+}
+
+.stat-flip-card:hover .stat-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.stat-flip-front,
+.stat-flip-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+.stat-flip-front {
+    z-index: 2;
+}
+
+.stat-flip-back {
+    transform: rotateY(180deg);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+}
+
+.stat-flip-front i,
+.stat-flip-back i {
+    font-size: 2.5rem;
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px rgba(100, 255, 218, 0.5));
+}
+
+.stat-flip-front .stat-number,
+.stat-flip-back .stat-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-flip-front .stat-label,
+.stat-flip-back .stat-label {
     font-size: 1rem;
     color: var(--text-secondary);
     text-transform: uppercase;
@@ -793,6 +1073,36 @@ section {
     height: 3px;
     background: linear-gradient(90deg, var(--accent-secondary), var(--accent-primary));
     border-radius: 2px;
+}
+
+/* Main Projects Wrapper with Cyber Theme */
+.main-projects-wrapper {
+    position: relative;
+    padding: 2rem;
+    border-radius: 20px;
+    background: rgba(10, 25, 47, 0.5);
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.main-projects-wrapper .projects-grid {
+    position: relative;
+    z-index: 1;
+}
+
+/* College Projects Wrapper with Cyber Theme */
+.college-projects-wrapper {
+    position: relative;
+    padding: 2rem;
+    border-radius: 20px;
+    background: rgba(10, 25, 47, 0.5);
+    border: 1px solid var(--border-color);
+    margin-top: 1rem;
+}
+
+.college-projects-wrapper .projects-grid {
+    position: relative;
+    z-index: 1;
 }
 
 /* About Section */
@@ -994,6 +1304,7 @@ section {
     text-decoration: none;
     color: inherit;
     display: block;
+    cursor: pointer;
 }
 
 .project-card.clickable {
@@ -1101,6 +1412,19 @@ section {
 
 .project-link:hover {
     color: var(--accent-hover);
+}
+
+.project-link.live-demo {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: var(--bg-primary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    font-size: 0.85rem;
+}
+
+.project-link.live-demo:hover {
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
+    transform: translateY(-2px);
 }
 
 /* Certificates Section */
