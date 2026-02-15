@@ -631,12 +631,6 @@
         padding: 0.9rem 1.5rem;
     }
     
-    .shape-1, .shape-2, .shape-3, .shape-4, .shape-5 {
-        width: 80px;
-        height: 80px;
-        opacity: 0.05;
-    }
-    
     .tech-stack-section .tech-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 0.75rem;
@@ -674,6 +668,44 @@
     
     .stat-number {
         font-size: 1.5rem;
+    }
+
+    /* DISABLE GLOW EFFECTS ON MOBILE FOR PERFORMANCE */
+    .floating-shape,
+    .particle {
+        display: none !important;
+    }
+    
+    /* Remove text shadows */
+    .project-hero h1,
+    .stat-number,
+    .section-title {
+        text-shadow: none !important;
+    }
+    
+    /* Remove box shadows */
+    .project-section,
+    .feature-card,
+    .tech-item,
+    .action-btn,
+    .back-btn,
+    .stat-item {
+        box-shadow: none !important;
+    }
+    
+    /* Remove filter effects */
+    .project-icon,
+    .feature-card i,
+    .tech-item i,
+    .action-btn i {
+        filter: none !important;
+    }
+    
+    /* Disable animations */
+    .floating-shape,
+    .particle,
+    .glow-orb {
+        animation: none !important;
     }
 }
 

@@ -1845,6 +1845,76 @@ section {
     .social-links {
         justify-content: center;
     }
+
+    /* DISABLE GLOW EFFECTS ON MOBILE FOR PERFORMANCE */
+    /* Remove text shadows/glows */
+    .nav-brand,
+    .hero-title,
+    .section-title,
+    .stat-number,
+    .glow-text {
+        text-shadow: none !important;
+        animation: none !important;
+    }
+    
+    /* Remove box shadows/glows */
+    .project-card,
+    .skill-card,
+    .certificate-card,
+    .stat-item,
+    .stat-flip-front,
+    .stat-flip-back,
+    .contact-item,
+    .btn,
+    .back-to-top,
+    .hamburger span,
+    .nav-link::after {
+        box-shadow: none !important;
+    }
+    
+    /* Remove filter effects */
+    .stat-flip-front i,
+    .stat-flip-back i,
+    .project-card i,
+    .skill-card i,
+    .certificate-card i,
+    .contact-item i {
+        filter: none !important;
+    }
+    
+    /* Disable expensive animations */
+    .floating-shape,
+    .glow-orb,
+    .particle {
+        animation: none !important;
+        display: none !important;
+    }
+    
+    /* Simplify hero background */
+    .hero::before,
+    .hero::after {
+        display: none !important;
+    }
+    
+    /* Remove hover glow effects */
+    .project-card:hover,
+    .skill-card:hover,
+    .certificate-card:hover,
+    .btn:hover,
+    .nav-link:hover {
+        text-shadow: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* Hide canvas completely on mobile */
+    .cyber-grid-bg {
+        display: none !important;
+    }
+    
+    /* Remove orbs */
+    .glow-orb-sm {
+        display: none !important;
+    }
 }
 
 @media (max-width: 480px) {
