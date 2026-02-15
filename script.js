@@ -632,6 +632,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize cyber grid
     initCyberGrid();
     
+    // Mobile flip card support (tap to flip instead of hover)
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        const flipCards = document.querySelectorAll('.stat-flip-card');
+        flipCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                const inner = card.querySelector('.stat-flip-inner');
+                if (inner) {
+                    inner.classList.toggle('flipped');
+                }
+            });
+        });
+    }
+    
     // Add a small delay for smooth initial animations
     setTimeout(() => {
         document.body.classList.add('loaded');

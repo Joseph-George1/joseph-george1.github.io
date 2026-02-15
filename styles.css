@@ -885,7 +885,8 @@ body {
     transform-style: preserve-3d;
 }
 
-.stat-flip-card:hover .stat-flip-inner {
+.stat-flip-card:hover .stat-flip-inner,
+.stat-flip-inner.flipped {
     transform: rotateY(180deg);
 }
 
@@ -1658,26 +1659,28 @@ section {
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
     .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 1rem;
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .skills-grid,
     .projects-grid,
     .certificates-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .stats-grid {
@@ -1686,11 +1689,11 @@ section {
     }
 
     .stat-number {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .stat-item i {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .back-to-top {
@@ -1703,16 +1706,223 @@ section {
     .container {
         padding: 0 1rem;
     }
+
+    /* Flip card mobile - tap to flip */
+    .stat-flip-card {
+        min-height: 150px;
+    }
+    
+    .stat-flip-inner {
+        min-height: 150px;
+    }
+    
+    .stat-flip-front,
+    .stat-flip-back {
+        padding: 1.5rem 1rem;
+    }
+    
+    .stat-flip-front i,
+    .stat-flip-back i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stat-flip-front .stat-number,
+    .stat-flip-back .stat-number {
+        font-size: 1.6rem;
+    }
+    
+    .stat-flip-front .stat-label,
+    .stat-flip-back .stat-label {
+        font-size: 0.8rem;
+    }
+
+    /* Project wrappers mobile */
+    .main-projects-wrapper,
+    .college-projects-wrapper {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+    
+    /* Project cards mobile */
+    .project-card {
+        padding: 1.5rem;
+    }
+    
+    .project-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .project-card p {
+        font-size: 0.9rem;
+    }
+
+    /* About section mobile */
+    .about-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .about-text {
+        padding-right: 0;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    /* Tech stack mobile */
+    .tech-stack {
+        gap: 0.5rem;
+    }
+    
+    .tech-stack span {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    /* Section padding mobile */
+    section {
+        padding: 3rem 0;
+    }
+    
+    .hero {
+        padding: 6rem 0 3rem;
+        min-height: auto;
+    }
+
+    /* Contact section mobile */
+    .contact-info {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .contact-item {
+        padding: 1rem;
+    }
+
+    /* Cyber objects mobile - reduce/hide some */
+    .cyber-obj {
+        display: none;
+    }
+    
+    .glow-orb-sm {
+        width: 80px;
+        height: 80px;
+        opacity: 0.3;
+    }
+
+    /* Canvas background - reduce opacity on mobile */
+    .cyber-grid-bg {
+        opacity: 0.3;
+    }
+    
+    /* Certificates */
+    .certificate-card {
+        padding: 1.5rem;
+    }
+    
+    .certificate-card i {
+        font-size: 2rem;
+    }
+    
+    /* Skills */
+    .skill-card {
+        padding: 1.5rem;
+    }
+    
+    .skill-card i {
+        font-size: 2rem;
+    }
+
+    /* Footer mobile */
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
     }
 
     .btn {
         padding: 0.7rem 1.5rem;
         font-size: 0.9rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .stat-flip-card {
+        min-height: 130px;
+    }
+    
+    .stat-flip-inner {
+        min-height: 130px;
+    }
+    
+    .stat-flip-front .stat-number,
+    .stat-flip-back .stat-number {
+        font-size: 1.4rem;
+    }
+    
+    .nav-brand {
+        font-size: 1.2rem;
+    }
+    
+    .project-card {
+        padding: 1rem;
+    }
+    
+    .project-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .tech-stack span {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .container {
+        padding: 0 0.75rem;
+    }
+    
+    section {
+        padding: 2.5rem 0;
+    }
+    
+    .main-projects-wrapper,
+    .college-projects-wrapper {
+        padding: 0.75rem;
+        border-radius: 15px;
+    }
+    
+    /* Hide more decorative elements on small screens */
+    .glow-orb-sm {
+        display: none;
+    }
+    
+    .floating-shape {
+        display: none;
     }
 }
 
