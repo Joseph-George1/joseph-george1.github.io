@@ -1,0 +1,6 @@
+Certificate: Fortinet NSE 4 - Certified in FortiOS
+Issued by: Fortinet Training Institute
+Date: October 2026
+Expiration: October 2028
+
+This certificate reflects the CV record for FortiOS and firewall operations expertise in Fortinet security environments.

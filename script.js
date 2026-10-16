@@ -20,7 +20,7 @@ navLinks.forEach(link => {
 // TYPING EFFECT
 // ============================================
 const typedTextElement = document.getElementById('typedText');
-const textArray = ['Cybersecurity', 'Engineering', 'Software Development', 'AI', 'Penetration Testing'];
+const textArray = ['SOC Engineer', 'Threat Hunting', 'Red Team Operations', 'Security Engineering', 'DFIR'];
 let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;

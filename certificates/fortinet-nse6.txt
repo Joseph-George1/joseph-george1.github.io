@@ -1,0 +1,6 @@
+Certificate: Fortinet NSE 6 - Certified in Security Operations
+Issued by: Fortinet Training Institute
+Date: October 2026
+Expiration: October 2028
+
+This certificate reflects the CV record for Security Operations, SOC workflows, detection, triage, and incident response.
